@@ -5,6 +5,8 @@ import { useState } from "react";
 function App() {
   const APP_MODES = ["edit", "view"]
   const [mode, setMode] = useState(APP_MODES[0]);
+  const APP_THEMES = ["dark", "light"]
+  const [theme, setTheme] = useState(APP_THEMES[0]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -20,23 +22,10 @@ function App() {
             // We cast to number to conver false/true to 0/1
             setMode(APP_MODES[Number(e.target.checked)]);
           }} />
-          <main>
-            <section className="card">
-              <h2>General</h2>
-              <h3>Name</h3>
-              <p>{name}</p>
-            </section>
-          </main>
-        </>
-      )
-    case APP_MODES[1]:
-      return (
-        <>
-          <h1>CV App</h1>
-          <label htmlFor="mode-toggle">{mode}</label>
-          <input type="checkbox" id="mode-toggle" onChange={(e) => {
+          <label htmlFor="theme-toggle">{theme}</label>
+          <input type="checkbox" id="theme-toggle" onChange={(e) => {
             // We cast to number to conver false/true to 0/1
-            setMode(APP_MODES[Number(e.target.checked)]);
+            setTheme(APP_THEMES[Number(e.target.checked)]);
           }} />
           <main>
             <section className="card">
@@ -51,6 +40,29 @@ function App() {
             </section>
             <section className="card">
               <h2>Education</h2>
+            </section>
+          </main>
+        </>
+      )
+    case APP_MODES[1]:
+      return (
+        <>
+          <h1>CV App</h1>
+          <label htmlFor="mode-toggle">{mode}</label>
+          <input type="checkbox" id="mode-toggle" onChange={(e) => {
+            // We cast to number to conver false/true to 0/1
+            setMode(APP_MODES[Number(e.target.checked)]);
+          }} />
+          <label htmlFor="theme-toggle">{theme}</label>
+          <input type="checkbox" id="theme-toggle" onChange={(e) => {
+            // We cast to number to conver false/true to 0/1
+            setTheme(APP_THEMES[Number(e.target.checked)]);
+          }} />
+          <main>
+            <section className="card">
+              <h2>General</h2>
+              <h3>Name</h3>
+              <p>{name}</p>
             </section>
           </main>
         </>
