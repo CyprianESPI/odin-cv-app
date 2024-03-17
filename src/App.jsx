@@ -4,13 +4,8 @@ import { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
-
-  const handleChange = (text) => {
-    setName(text);
-    console.log("App.handleChange", name);
-  }
-
-  console.log("App", this);
+  const [email, setEmail] = useState("");
+  const [tel, setTel] = useState("");
 
   return (
     <>
@@ -18,7 +13,7 @@ function App() {
       <main>
         <section className="card">
           <h2>General</h2>
-          <Contact name={name} onChange={handleChange} ></Contact>
+          <Contact name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
         </section>
         <section className="card">
           <h2>Skills</h2>
