@@ -1,26 +1,33 @@
 import './App.css'
 import Contact from './components/contact'
+import { useState } from "react";
 
 function App() {
+  const [name, setName] = useState("");
+
+  const handleChange = (text) => {
+    setName(text);
+    console.log("App.handleChange", name);
+  }
+
+  console.log("App", this);
+
   return (
     <>
       <h1>CV App</h1>
       <main>
         <section className="card">
           <h2>General</h2>
-          <Contact></Contact>
+          <Contact name={name} onChange={handleChange} ></Contact>
         </section>
         <section className="card">
           <h2>Skills</h2>
-          <Contact></Contact>
         </section>
         <section className="card">
           <h2>Work Experience</h2>
-          <Contact></Contact>
         </section>
         <section className="card">
           <h2>Education</h2>
-          <Contact></Contact>
         </section>
       </main>
     </>

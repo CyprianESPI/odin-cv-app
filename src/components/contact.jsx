@@ -1,12 +1,12 @@
-import { useState } from "react";
-
-function Contact() {
-    const [name, setName] = useState("");
-    console.log("Contact:", this);
+function Contact({ name, onChange }) {
+    const handleChange = event => {
+        const text = event.target.value;
+        onChange(text);
+    };
 
     return <div>
         <label htmlFor="name">Name</label>
-        <input id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="John Smith" />
+        <input id="name" type="text" value={name} onChange={handleChange} placeholder="John Smith" />
         <label htmlFor="email">Email</label>
         <input id="email" type="email" />
         <label htmlFor="tel">Phone Number</label>
