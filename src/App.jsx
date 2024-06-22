@@ -37,10 +37,7 @@ function App() {
           setTheme(APP_THEMES[Number(e.target.checked)]);
         }} />
         <main>
-          <section className="card">
-            <h2>General</h2>
-            <Contact mode={mode} name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
-          </section>
+          <Contact mode={mode} name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
           <section className="card">
             <h2>Skills</h2>
           </section>
