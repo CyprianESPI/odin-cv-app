@@ -12,12 +12,20 @@ function Contact({mode, name, setName, email, setEmail, tel, setTel }) {
         case APP_MODES[0]:
             return <section>
                 <h2>Contact</h2>
-                <label htmlFor="name">Name</label>
-                <input id="name" type="text" value={name} onChange={handleChange(setName)} placeholder="John Smith" />
-                <label htmlFor="email">Email</label>
-                <input id="email" type="email" value={email} onChange={handleChange(setEmail)} placeholder="john.smith@gmail.com" />
-                <label htmlFor="tel">Phone Number</label>
-                <input id="tel" type="tel" value={tel} onChange={handleChange(setTel)} placeholder="0123456" />
+                <div style={{display:"flex", justifyContent:"space-around", flexWrap:"wrap"}}>
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <input id="name" type="text" value={name} onChange={handleChange(setName)} placeholder="John Smith" />
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input id="email" type="email" value={email} onChange={handleChange(setEmail)} placeholder="john.smith@gmail.com" />
+                    </div>
+                    <div>
+                        <label htmlFor="tel">Phone Number</label>
+                        <input id="tel" type="tel" value={tel} onChange={handleChange(setTel)} placeholder="0123456" />
+                    </div>
+                </div>
             </section>;
         case APP_MODES[1]:
             return <section>
