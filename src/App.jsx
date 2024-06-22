@@ -25,7 +25,9 @@ function App() {
   return (
     <>
       <div style={{ colorScheme: theme }}>
+        <header style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
         <h1>CV App</h1>
+        <div style={{flex:"1 1 auto"}}></div>
         <label htmlFor="mode-toggle">{mode}</label>
         <input type="checkbox" id="mode-toggle" onChange={(e) => {
           // We cast to number to conver false/true to 0/1
@@ -36,6 +38,9 @@ function App() {
           // We cast to number to conver false/true to 0/1
           setTheme(APP_THEMES[Number(e.target.checked)]);
         }} />
+        </header>
+        
+        
         <main>
           <Contact mode={mode} name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
           <section className="card">
