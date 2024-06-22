@@ -3,6 +3,7 @@ import Contact from './components/contact'
 import { useState } from "react";
 import ContactInfos from './models/contact-infos';
 import Data from './models/data';
+import Skills from './components/skills';
 
 /** 0 : edit | 1 : view */
 export const APP_MODES = ["edit", "view"]
@@ -20,6 +21,8 @@ function App() {
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
 
+  const [skills, setSkills] = useState([""]);
+
   if (initialized) {
     const contactInfos = new ContactInfos();
     contactInfos.name = name;
@@ -28,6 +31,7 @@ function App() {
   
     const data = new Data();
     data.ContactInfos = contactInfos;
+    data.Skills = skills;
     localStorage.setItem(LOCAL_STORAGE_DATA_KEY, JSON.stringify(data));
     console.log(`Saved ${LOCAL_STORAGE_DATA_KEY}`, data);
   } else {
@@ -38,6 +42,7 @@ function App() {
       setName(data.ContactInfos.name);
       setEmail(data.ContactInfos.email);
       setTel(data.ContactInfos.tel);
+      setSkills(data.Skills);
     } catch (err) {
       console.error(err);
     }
@@ -65,9 +70,7 @@ function App() {
         
         <main>
           <Contact mode={mode} name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
-          <section className="card">
-            <h2>Skills</h2>
-          </section>
+          <Skills mode={mode} skills={skills} setSkills={setSkills}></Skills>
           <section className="card">
             <h2>Work Experience</h2>
           </section>
