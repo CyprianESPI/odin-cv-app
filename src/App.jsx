@@ -2,13 +2,17 @@ import './App.css'
 import Contact from './components/contact'
 import { useState } from "react";
 import ContactInfos from './models/contact-infos';
+import Data from './models/data';
 
 /** 0 : edit | 1 : view */
 export const APP_MODES = ["edit", "view"]
 /** 0 : dark | 1 : light */
 export const APP_THEMES = ["dark", "light"]
 
+const LOCAL_STORAGE_DATA_KEY = 'data';
+
 function App() {
+  const [initialized, setInitialized] = useState(false);
   const [mode, setMode] = useState(APP_MODES[0]);
   const [theme, setTheme] = useState(APP_THEMES[0]);
 
@@ -16,11 +20,29 @@ function App() {
   const [email, setEmail] = useState("");
   const [tel, setTel] = useState("");
 
-  const contactInfos = new ContactInfos();
-  contactInfos.name = name;
-  contactInfos.email = email;
-  contactInfos.tel = tel;
-  console.log('App', name, email, tel);
+  if (initialized) {
+    const contactInfos = new ContactInfos();
+    contactInfos.name = name;
+    contactInfos.email = email;
+    contactInfos.tel = tel;
+  
+    const data = new Data();
+    data.ContactInfos = contactInfos;
+    localStorage.setItem(LOCAL_STORAGE_DATA_KEY, JSON.stringify(data));
+    console.log(`Saved ${LOCAL_STORAGE_DATA_KEY}`, data);
+  } else {
+    try {
+      const rawData = localStorage.getItem(LOCAL_STORAGE_DATA_KEY);
+      const data = JSON.parse(rawData);
+      console.info(`Loaded ${LOCAL_STORAGE_DATA_KEY}`, data);
+      setName(data.ContactInfos.name);
+      setEmail(data.ContactInfos.email);
+      setTel(data.ContactInfos.tel);
+    } catch (err) {
+      console.error(err);
+    }
+    setInitialized(true);
+  }
 
   return (
     <>
