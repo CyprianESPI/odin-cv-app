@@ -84,7 +84,7 @@ function App() {
             {workXps.map((workXp, index) => {
               return (
               <div key={`work-xp-${index}`}>
-              <WorkXpCmp mode={mode} workXp={workXp}></WorkXpCmp>
+              <WorkXpCmp mode={mode} xps={workXps} setXps={setWorkXps} index={index}></WorkXpCmp>
               </div>);
             })}
           </section>

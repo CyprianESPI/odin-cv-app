@@ -1,16 +1,7 @@
 import { APP_MODES } from "../App";
+import handleArrayChange  from "../utils/array-utils";
 
 function Skills({mode, skills, setSkills }) {
-    function handleArrayChange(arr, setArr, index, newValue) {
-        const newArr = arr.map((v, i) => {
-            if (i === index) {
-                return newValue;
-            } else {
-                return v;
-            }
-        });
-        setArr(newArr);
-    }
 
     const title = "Skills";
 
