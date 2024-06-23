@@ -49,7 +49,9 @@ function WorkXpCmp({mode, xps, setXps, index }) {
             </section>;
         case APP_MODES[1]:
             return <section>
-                <h3>{workXp.role}</h3>
+                <h3>{workXp.role} at {workXp.company}</h3>
+                <p>{workXp.roleDescription}</p>
+                <p>From {workXp.start} to {workXp.end}</p>
             </section>;
     }
 } export default WorkXpCmp;
