@@ -30,11 +30,7 @@ function Skills({mode, skills, setSkills }) {
             return (<section>
             <h2>{title}</h2>
             <div style={{display: "flex", flexWrap:"wrap"}}>
-            {skills.map((skill, index) => (
-            <span key={index} style={{margin:"0 4px"}}>
-                {skill}
-            </span>
-            ))}
+            {skills.join(' | ')}
             </div>
             </section>);
     }
