@@ -4,7 +4,7 @@ class Data {
     constructor() {
         this.Skills = [];
         this.ContactInfos = new ContactInfos();
-        this.WorkXp = [];
-        this.SchoolXp = [];
+        this.WorkXps = [];
+        this.SchoolXps = [];
     }
 } export default Data;

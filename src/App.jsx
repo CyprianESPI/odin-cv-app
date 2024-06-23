@@ -4,6 +4,8 @@ import { useState } from "react";
 import ContactInfos from './models/contact-infos';
 import Data from './models/data';
 import Skills from './components/skills';
+import WorkXp from './models/work-xp';
+import WorkXpCmp from './components/work-xp';
 
 /** 0 : edit | 1 : view */
 export const APP_MODES = ["edit", "view"]
@@ -22,6 +24,7 @@ function App() {
   const [tel, setTel] = useState("");
 
   const [skills, setSkills] = useState([""]);
+  const [workXps, setWorkXps] = useState([new WorkXp()]);
 
   if (initialized) {
     const contactInfos = new ContactInfos();
@@ -32,6 +35,7 @@ function App() {
     const data = new Data();
     data.ContactInfos = contactInfos;
     data.Skills = skills;
+    data.WorkXps = workXps;
     localStorage.setItem(LOCAL_STORAGE_DATA_KEY, JSON.stringify(data));
     console.log(`Saved ${LOCAL_STORAGE_DATA_KEY}`, data);
   } else {
@@ -43,6 +47,10 @@ function App() {
       setEmail(data.ContactInfos.email);
       setTel(data.ContactInfos.tel);
       setSkills(data.Skills);
+      if (data.WorkXps.length)
+        setWorkXps(data.WorkXps);
+      else
+        setWorkXps([new WorkXp()]);
     } catch (err) {
       console.error(err);
     }
@@ -73,6 +81,12 @@ function App() {
           <Skills mode={mode} skills={skills} setSkills={setSkills}></Skills>
           <section className="card">
             <h2>Work Experience</h2>
+            {workXps.map((workXp, index) => {
+              return (
+              <div key={`work-xp-${index}`}>
+              <WorkXpCmp mode={mode} workXp={workXp}></WorkXpCmp>
+              </div>);
+            })}
           </section>
           <section className="card">
             <h2>Education</h2>

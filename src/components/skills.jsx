@@ -19,7 +19,7 @@ function Skills({mode, skills, setSkills }) {
             return (<section>
             <h2>{title}</h2>
             {skills.map((skill, index) => (
-            <div key={index}>
+            <div key={'skill' + index.toString()}>
                 <input type="text" value={skill} onChange={event => handleArrayChange(skills, setSkills, index, event.target.value)}  />
                 <button onClick={event => setSkills(skills.filter((v,i) => i !== index))}>delete</button>
             </div>
