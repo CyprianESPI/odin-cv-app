@@ -16,8 +16,10 @@ const LOCAL_STORAGE_DATA_KEY = 'data';
 
 function App() {
   const [initialized, setInitialized] = useState(false);
+  // Defaults to Edit mode
   const [mode, setMode] = useState(APP_MODES[0]);
-  const [theme, setTheme] = useState(APP_THEMES[0]);
+  // Defaults to Light mode
+  const [theme, setTheme] = useState(APP_THEMES[1]);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
