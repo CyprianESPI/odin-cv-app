@@ -87,6 +87,7 @@ function App() {
               <WorkXpCmp mode={mode} xps={workXps} setXps={setWorkXps} index={index}></WorkXpCmp>
               </div>);
             })}
+            <button onClick={(e) => setWorkXps([...workXps, new WorkXp()])}>add</button>
           </section>
           <section className="card">
             <h2>Education</h2>
