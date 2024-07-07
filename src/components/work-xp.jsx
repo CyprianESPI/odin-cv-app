@@ -13,7 +13,12 @@ function WorkXpCmp({mode, xps, setXps, index }) {
     switch(mode) {
         case APP_MODES[0]:
             return <section>
-                <h3>{workXp.role}</h3>
+                <span style={{display: "flex", justifyContent:"center",flexWrap:"wrap"}}>
+                    <h3>{workXp.role} at {workXp.company}</h3>
+                    <button onClick={() => {
+                        setXps(xps.filter((v, i) => i !== index));
+                        }}>delete</button>
+                </span>
                 <div style={{display:"flex", flexDirection:"column", flexWrap:"wrap"}}>
                     <div>
                         <label>Company</label>

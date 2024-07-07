@@ -85,7 +85,7 @@ function App() {
             <h2>Work Experience</h2>
             {workXps.map((workXp, index) => {
               return (
-              <div key={`work-xp-${index}`}>
+              <div key={`work-xp-${workXp.id}`}>
               <WorkXpCmp mode={mode} xps={workXps} setXps={setWorkXps} index={index}></WorkXpCmp>
               </div>);
             })}
