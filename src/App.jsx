@@ -6,6 +6,8 @@ import Data from './models/data';
 import Skills from './components/skills';
 import WorkXp from './models/work-xp';
 import WorkXpCmp from './components/work-xp';
+import SchoolXp from './models/school-xp';
+import SchoolXpCmp from './components/school-xp';
 
 /** 0 : edit | 1 : view */
 export const APP_MODES = ["edit", "view"]
@@ -27,6 +29,7 @@ function App() {
 
   const [skills, setSkills] = useState([""]);
   const [workXps, setWorkXps] = useState([new WorkXp()]);
+  const [schoolXps, setSchoolXps] = useState([new SchoolXp()]);
 
   if (initialized) {
     const contactInfos = new ContactInfos();
@@ -38,21 +41,29 @@ function App() {
     data.ContactInfos = contactInfos;
     data.Skills = skills;
     data.WorkXps = workXps;
+    data.SchoolXps = schoolXps;
     localStorage.setItem(LOCAL_STORAGE_DATA_KEY, JSON.stringify(data));
     console.log(`Saved ${LOCAL_STORAGE_DATA_KEY}`, data);
   } else {
     try {
       const rawData = localStorage.getItem(LOCAL_STORAGE_DATA_KEY);
-      const data = JSON.parse(rawData);
-      console.info(`Loaded ${LOCAL_STORAGE_DATA_KEY}`, data);
-      setName(data.ContactInfos.name);
-      setEmail(data.ContactInfos.email);
-      setTel(data.ContactInfos.tel);
-      setSkills(data.Skills);
-      if (data.WorkXps.length)
-        setWorkXps(data.WorkXps);
-      else
-        setWorkXps([new WorkXp()]);
+      if (rawData !== null) {
+        const data = JSON.parse(rawData);
+        console.info(`Loaded ${LOCAL_STORAGE_DATA_KEY}`, data);
+        setName(data.ContactInfos.name);
+        setEmail(data.ContactInfos.email);
+        setTel(data.ContactInfos.tel);
+        setSkills(data.Skills);
+        if (data.WorkXps.length)
+          setWorkXps(data.WorkXps);
+        else
+          setWorkXps([new WorkXp()]);
+
+        if (data.SchoolXps.length)
+          setSchoolXps(data.SchoolXps);
+        else
+          setSchoolXps([new SchoolXp()]);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -93,6 +104,13 @@ function App() {
           </section>
           <section className="card">
             <h2>Education</h2>
+            {schoolXps.map((xp, index) => {
+              return (
+              <div key={`school-xp-${xp.id}`}>
+              <SchoolXpCmp mode={mode} xps={schoolXps} setXps={setSchoolXps} index={index}></SchoolXpCmp>
+              </div>);
+            })}
+            <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])}>add</button>
           </section>
         </main>
       </div>
