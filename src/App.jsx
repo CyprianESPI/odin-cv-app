@@ -19,7 +19,7 @@ const LOCAL_STORAGE_DATA_KEY = 'data';
 function App() {
   const [initialized, setInitialized] = useState(false);
   // Defaults to Edit mode
-  const [mode, setMode] = useState(APP_MODES[0]);
+  const [mode, setMode] = useState(APP_MODES[1]);
   // Defaults to Light mode
   const [theme, setTheme] = useState(APP_THEMES[1]);
 
@@ -72,23 +72,7 @@ function App() {
 
   return (
     <>
-      <div style={{ colorScheme: theme }}>
-        <header style={{display:"flex", justifyContent:"space-between", alignItems:"center"}}>
-        <h1>CV App</h1>
-        <div style={{flex:"1 1 auto"}}></div>
-        <label htmlFor="mode-toggle">{mode}</label>
-        <input type="checkbox" id="mode-toggle" onChange={(e) => {
-          // We cast to number to conver false/true to 0/1
-          setMode(APP_MODES[Number(e.target.checked)]);
-        }} />
-        <label htmlFor="theme-toggle">{theme}</label>
-        <input type="checkbox" id="theme-toggle" onChange={(e) => {
-          // We cast to number to conver false/true to 0/1
-          setTheme(APP_THEMES[Number(e.target.checked)]);
-        }} />
-        </header>
-        
-        
+      <div>
         <main>
           <Contact mode={mode} name={name} setName={setName} email={email} setEmail={setEmail} tel={tel} setTel={setTel} ></Contact>
           <Skills mode={mode} skills={skills} setSkills={setSkills}></Skills>
@@ -113,6 +97,16 @@ function App() {
             <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])}>add</button>
           </section>
         </main>
+
+        <footer>
+          <div style={{position:'absolute', bottom:'2rem', right: '2rem'}}>
+          <label htmlFor="mode-toggle">{mode}</label>
+          <input type="checkbox" id="mode-toggle" onChange={(e) => {
+            // We cast to number to conver false/true to 0/1
+            setMode(APP_MODES[Number(e.target.checked)]);
+          }} />
+          </div>
+        </footer>
       </div>
     </>
   );
