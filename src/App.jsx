@@ -84,7 +84,7 @@ function App() {
               <WorkXpCmp mode={mode} xps={workXps} setXps={setWorkXps} index={index}></WorkXpCmp>
               </div>);
             })}
-            <button onClick={(e) => setWorkXps([...workXps, new WorkXp()])}>add</button>
+            <button onClick={(e) => setWorkXps([...workXps, new WorkXp()])} className='material-icons'>add</button>
           </section>
           <section className="card">
             <h2>Education</h2>
@@ -94,17 +94,18 @@ function App() {
               <SchoolXpCmp mode={mode} xps={schoolXps} setXps={setSchoolXps} index={index}></SchoolXpCmp>
               </div>);
             })}
-            <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])}>add</button>
+            <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])} className='material-icons'>add</button>
           </section>
         </main>
 
         <footer>
           <div style={{position:'absolute', bottom:'2rem', right: '2rem'}}>
-          <label htmlFor="mode-toggle">{mode}</label>
-          <input type="checkbox" id="mode-toggle" onChange={(e) => {
-            // We cast to number to conver false/true to 0/1
-            setMode(APP_MODES[Number(e.target.checked)]);
-          }} />
+            {
+              mode === APP_MODES[0] ?
+              <button onClick={(e) => setMode(APP_MODES[1])} className='material-icons'>visibility</button>
+              :
+              <button onClick={(e) => setMode(APP_MODES[0])} className='material-icons'>edit</button>
+            }
           </div>
         </footer>
       </div>

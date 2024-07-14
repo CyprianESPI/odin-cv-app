@@ -17,7 +17,7 @@ function SchoolXpCmp({mode, xps, setXps, index }) {
                     <h3>{xp.title} at {xp.school}</h3>
                     <button onClick={() => {
                         setXps(xps.filter((v, i) => i !== index));
-                        }}>delete</button>
+                        }} className="material-icons">delete</button>
                 </span>
                 <div style={{display:"flex", flexDirection:"column", flexWrap:"wrap"}}>
                     <div>

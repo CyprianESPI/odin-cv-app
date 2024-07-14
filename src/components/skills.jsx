@@ -12,10 +12,10 @@ function Skills({mode, skills, setSkills }) {
             {skills.map((skill, index) => (
             <div key={'skill' + index.toString()}>
                 <input type="text" value={skill} onChange={event => handleArrayChange(skills, setSkills, index, event.target.value)}  />
-                <button onClick={event => setSkills(skills.filter((v,i) => i !== index))}>delete</button>
+                <button onClick={event => setSkills(skills.filter((v,i) => i !== index))} className="material-icons">delete</button>
             </div>
             ))}
-            <button onClick={event => setSkills([...skills, ""])}>add new skill</button>
+            <button onClick={event => setSkills([...skills, ""])} className="material-icons">add</button>
             </section>);
         case APP_MODES[1]:
             return (<section>
