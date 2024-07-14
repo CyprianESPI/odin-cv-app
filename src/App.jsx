@@ -84,7 +84,7 @@ function App() {
               <WorkXpCmp mode={mode} xps={workXps} setXps={setWorkXps} index={index}></WorkXpCmp>
               </div>);
             })}
-            <button onClick={(e) => setWorkXps([...workXps, new WorkXp()])} className='material-icons'>add</button>
+            {mode === APP_MODES[0] && <button onClick={(e) => setWorkXps([...workXps, new WorkXp()])} className='material-icons'>add</button>}
           </section>
           <section className="card">
             <h2>Education</h2>
@@ -94,12 +94,12 @@ function App() {
               <SchoolXpCmp mode={mode} xps={schoolXps} setXps={setSchoolXps} index={index}></SchoolXpCmp>
               </div>);
             })}
-            <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])} className='material-icons'>add</button>
+            {mode === APP_MODES[0] && <button onClick={(e) => setSchoolXps([...schoolXps, new SchoolXp()])} className='material-icons'>add</button>}
           </section>
         </main>
 
         <footer>
-          <div style={{position:'absolute', bottom:'2rem', right: '2rem'}}>
+          <div style={{position:'fixed', bottom:'2rem', right: '2rem'}}>
             {
               mode === APP_MODES[0] ?
               <button onClick={(e) => setMode(APP_MODES[1])} className='material-icons'>visibility</button>
